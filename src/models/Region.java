@@ -1,25 +1,29 @@
 package models;
 
 public class Region {
-  private int regionId;
-  private String regionName;
+  // Ecapsulation
+  private int id;
+  private String name;
   
-  public int getRegionId() {
-    return regionId;
+  public int getId() {
+    return id;
   }
-  public void setRegionId(int regionId) {
-    this.regionId = regionId;
+
+  public void setId(int id) {
+    this.id = id;
   }
-  public String getRegionName() {
-    return regionName;
+
+  public String getName() {
+    return name;
   }
-  public void setRegionName(String regionName) {
-    this.regionName = regionName;
+
+  public void setName(String name) {
+    this.name = name;
   }
-  
-  public Region(int regionId, String regionName) {
-    this.regionId = regionId;
-    this.regionName = regionName;
+
+  public Region(int id, String name) {
+    this.id = id;
+    this.name = name;
   }
   
 }

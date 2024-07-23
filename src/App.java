@@ -2,7 +2,8 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import dao.RegionDAO;
+import dao.RegionInterface;
+import dao.implementation.RegionDAO;
 import models.Region;
 import tools.DbConnection;
 
@@ -11,7 +12,7 @@ public class App {
         System.out.println("Test JDBC");
 
         DbConnection connection = new DbConnection();
-        System.out.println(connection.getConnection());
+        // System.out.println(connection.getConnection());
 
         // RegionDAO rdao = new RegionDAO(connection.getConnection());
         // for(Region region : rdao.getAll()){
@@ -23,7 +24,7 @@ public class App {
         // Region region = new Region(12, "Antartica");
         // System.out.println(rdao.insert(region));
 
-        RegionDAO rdao = new RegionDAO(connection.getConnection());
+        // RegionDAO rdao = new RegionDAO(connection.getConnection());
         // Region region = rdao.getById(14);
         // if(region != null){
         //     System.out.println(region.getRegionId() + " " +  region.getRegionName());
@@ -32,8 +33,20 @@ public class App {
         //     System.out.println("Not Found");
         // }
         // System.out.println(rdao.update(12, "Amerika"));
-        System.out.println(rdao.delete(12));
+        // System.out.println(rdao.getData(12));
 
+        // Region regionById = region.getData(10);
+        // System.out.println(regionById.getId() + " "+ regionById.getName());
+        // Region newRegion = new Region(20, "Amerika");
+        // region.insert(newRegion);
+
+        // region.delete(11);
+        // Parameter untuk insert dan update menggunakan object saja agar bisa generic
+        RegionInterface region = new RegionDAO(connection.getConnection());
+        Region updateRegion = new Region(109, "SEA");
+        System.out.println("Affected row: " + region.update(updateRegion));
+
+        ///////////////////////////////////////
         // Statement sqlSt; // runs SQL
         // String useSql = new String("use db_asset_management");
         // String output;
